@@ -1,0 +1,42 @@
+<div class="outler  mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-lg- col-md-7 offset-lg-4 offset-md-3">
+                <div class="panel border bg-white">
+                    <div class="panel-heading">
+                        <h3 class="pt-3 font-weight-bold text-center">Login Page</h3>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form [formGroup]="signupForm">
+                            <div class="form-group row  pt-3">
+                                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input formControlName = 'name' type="text" class="form-control" id="name"
+                                        placeholder="name">
+                                </div>
+                            </div>
+                            <div class="form-group row pt-3">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input formControlName = 'email' type="email" class="form-control" id="staticEmail"
+                                        placeholder="email@example.com">
+                                </div>
+                            </div>
+                            <div class="form-group row  pt-3">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input formControlName = 'password' type="password" class="form-control" id="inputPassword"
+                                        placeholder="Password">
+                                </div>
+                            </div>
+                            <button (click)="onSignUp()" type="submit" class="btn btn-primary btn-block mt-4 w-100">Signup</button>
+                            <div class="text-center pt-4 text-muted">
+                                You have already an account? <a id="forget" routerLink="/login">login</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,7 +4,7 @@
     <table class="table" *ngIf="employees && employees.length > 0">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
@@ -15,8 +15,8 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let employee of employees">
-                <td>{{employee.id}}</td>
+            <tr *ngFor="let employee of employees;  index as i">
+                <td>{{i + 1}}</td> 
                 <td>{{employee.name}}</td>
                 <td>{{employee.email}}</td>
                 <td>{{employee.phone}}</td>
