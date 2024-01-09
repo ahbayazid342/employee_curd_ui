@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SignupComponent implements OnInit {
   signupForm !: FormGroup;
-  constructor (private fb:FormBuilder, private authService:AuthService) {
+  constructor (private fb:FormBuilder, private authService:AuthService, private router:Router, private toast: NgToastService) {
   }
   
   ngOnInit(): void {
@@ -22,12 +24,16 @@ export class SignupComponent implements OnInit {
 
   onSignUp () {
     console.log(this.signupForm.value);
+    
     if (this.signupForm.valid) {
-      
       this.authService.signup(this.signupForm.value)
         .subscribe ({
           next: (res) => {
-            alert (res.message)
+            console.log(res.message);
+            
+            this.toast.success({detail:"SUCCESS",summary:res.message ,duration:5000});
+            this.signupForm.reset();
+           this.router.navigate (['signup'])
           },
           error: (err) => {
             alert (err.message)

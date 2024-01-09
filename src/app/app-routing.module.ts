@@ -5,27 +5,32 @@ import { AddEmployeeComponent } from './components/employees/add-employee/add-em
 import { EditEmployeeComponent } from './components/employees/edit-employee/edit-employee.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { authGuard } from './components/gurds/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: EmployeesListComponent
+    pathMatch: 'full',
+    redirectTo: '/login',
   },
   {
     path: 'employees',
-    component: EmployeesListComponent
+    component: EmployeesListComponent, 
+    canActivate: [authGuard]
   },
   {
     path: 'employees/add',
-    component: AddEmployeeComponent
+    component: AddEmployeeComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'employees/edit/:id',
-    component: EditEmployeeComponent
+    component: EditEmployeeComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'signup',

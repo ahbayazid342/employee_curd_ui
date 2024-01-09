@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" routerLink="login">Fullstack.UI</a>
+    <a class="navbar-brand" routerLink="/employees">Fullstack.UI</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,10 +12,17 @@
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="employees/add">Add Employee</a>
-        </li>
-
-        <li class="nav-item">
+        </li>        
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <span></span>
+        <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link active" aria-current="page" routerLink="login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <button class="btn btn-primary" (click)="onLogout()">
+            Logout
+          </button>
         </li>
       </ul>
     </div>
